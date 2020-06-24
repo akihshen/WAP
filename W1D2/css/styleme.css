@@ -1,0 +1,38 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    line-height: 1;
+
+    background-color: grey;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1, h2{
+    color: midnightblue;
+    text-decoration: underline;
+}
+
+p{
+    text-align: left;
+    text-overflow: ellipsis;
+    text-indent: 1em;
+}
+
+.w3c-css{ text-indent: 0;}
+
+ul{ list-style-type: square;}
+
+a:link{ color: blue;}
+
+a:visited{ color: pink;}
+
+a:hover{ color: red;}
+
+strong{
+    color: navy;
+    font-family: "Arial Black";
+    font-style: italic;
+}
+
+.neighbors strong{ color: black;}
