@@ -1,0 +1,99 @@
+@media only screen and (max-width: 600px) {
+    .columns div{
+        background-color: gray;
+        /* border: 1px black solid; */
+    }
+
+    .columns #column1{
+        flex: 1;
+        order: 1;
+    }
+    
+    .columns #column2{
+        flex: 2;
+        order: 3;
+    }
+    
+    .columns #column3{
+        flex: 1;
+        order: 2;
+    }
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /* grid-gap: 0; */
+    margin: 10px 10px;
+}
+
+ .header{
+    font-size: 25pt;
+    text-align: center;
+    background-color: lightblue;
+    margin-bottom: 0;
+    height: 50px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    background-color: darkcyan;
+    height: 25px;
+}
+
+.menu div{
+    border-right: 1px black solid;
+    padding: 0px 10px;
+}
+
+.columns{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 300px;
+    min-width: 400px;
+}
+
+.columns #column1{
+    flex: 1;
+    order: 1;
+    background-color: rgb(146, 141, 141);
+}
+
+.columns #column2{
+    flex: 2;
+    order: 2;
+    background-color: rgb(153, 151, 151);
+}
+
+.columns #column3{
+    flex: 1;
+    order: 3;
+    background-color: rgb(170, 165, 165);
+}
+
+.footer{
+    background-color: darkcyan;
+    height: 50px;
+
+}
+
+.validator{
+    position: fixed;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+}
+
+
+
+/* .container > div{
+    background-color: #eee;
+    padding: 1em;
+}
+
+.container > div:nth-child(odd){
+    background: #ddd;
+} */
