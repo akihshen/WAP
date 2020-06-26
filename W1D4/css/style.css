@@ -1,29 +1,30 @@
 @media only screen and (max-width: 600px) {
     .columns div{
         background-color: gray;
-        /* border: 1px black solid; */
     }
 
     .columns #column1{
         flex: 1;
         order: 1;
+        flex-basis: 100px;
     }
     
     .columns #column2{
         flex: 2;
         order: 3;
+        flex-basis: 200px;
     }
     
     .columns #column3{
         flex: 1;
         order: 2;
+        flex-basis: 100px;
     }
 }
 
 .container{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    /* grid-gap: 0; */
     margin: 10px 10px;
 }
 
