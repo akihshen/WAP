@@ -17,3 +17,13 @@ body{
 h1{
     word-spacing: 0.01em;
 }
+
+p{
+    font-size: 15px;
+    word-spacing: 2px;
+    line-height: 15px;
+}
+
+strong{
+    color: green;
+}
