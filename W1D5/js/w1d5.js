@@ -1,6 +1,7 @@
 /* runs test to see if expected argument is === to value returned by function2test argument */
 function functionTester(expected, found) {
 
+    // Checks if the arguments are array, if so it will compare element by element
     if(Array.isArray(expected) && Array.isArray(found)){
         if(expected.length !== found.length){
             return "TEST FAILED.  Expected " + expected + " found " + found;
@@ -39,10 +40,15 @@ return max(max(a, b), c);
 function isVowel(char){
     if(!char || char.length > 1){
         return false;
-    } else if(char === "a" || char === "e" || char === "i" || char === "o" || char === "u"){
-        return true;
     } else{
-        return false;
+        // Convert to lower case letter
+        char = char.toLowerCase();
+
+        if(char === "a" || char === "e" || char === "i" || char === "o" || char === "u"){
+            return true;
+        } else{
+            return false;
+        }
     }
 }
 
@@ -154,35 +160,45 @@ console.log("\tExpected output of maxOfThree(55,4,44) is 55  " + functionTester(
 // Fail test case
 console.log("\tExpected output of maxOfThree(55,4,44) is 55  " + functionTester(4, maxOfThree(55, 4, 44)));
 
-// 3. Test cases for sum() function
+// 3. Testing the isVowel() function
+console.log("Testing the isVowel() function");
+// Pass test case
+console.log("\tExpected output of isVowel('e') is true  " + functionTester(true, isVowel("e")));
+console.log("\tExpected output of isVowel('I') is true  " + functionTester(true, isVowel("I")));
+
+// Fail test case
+console.log("\tExpected output of isVowel('d') is false  " + functionTester(true, isVowel("d")));
+console.log("\tExpected output of isVowel('A') is true  " + functionTester(false, isVowel("A")));
+
+// 4. Test cases for sum() function
 console.log("Testing the sum() function");
 // Pass test case
 console.log("\tExpected output of sum([1, 2, 3, 4, 5, 6]) is 21  " + functionTester(21, sum([1, 2, 3, 4, 5, 6])));
 // Fail test case
 console.log("\tExpected output of sum([1, 2, 3, 4, 5, 6]) is 21 " + functionTester(25, sum([1, 2, 3, 4, 5, 6])));
 
-// 4. Test cases for multiply() function
+// 5. Test cases for multiply() function
 console.log("Testing the multiply() function");
 // Pass test case
 console.log("\tExpected output of multiply([1, 2, 3, 4, 5, 6]) is 720  " + functionTester(720, multiply([1, 2, 3, 4, 5, 6])));
 // Fail test case
 console.log("\tExpected output of multiply([1, 2, 3, 4, 5]) is 120  " + functionTester(360, multiply([1, 2, 3, 4, 5])));
 
-// 5. Test cases for reverse() function
+// 6. Test cases for reverse() function
 console.log("Testing the reverse() function");
 // Pass test case
 console.log("\tExpected output of reverse('Computer') is  retupmoC " + functionTester("retupmoC", reverse("Computer")));
 // Fail test case
 console.log("\tExpected output of reverse('WOW') is  WOW " + functionTester("MOM", reverse("WOW")));
 
-// 6. Test cases for findLongestWord() function
+// 7. Test cases for findLongestWord() function
 console.log("Testing the findLongestWord() function");
 // Pass test case
 console.log("\tExpected output of findLongestWord(['test', 'One', 'Orange']) is  6 " + functionTester(6, findLongestWord(["test", "One", "Orange"])));
 // Fail test case
 console.log("\tExpected output of findLongestWord(['Two', 'One', 'Leg']) is  3 " + functionTester(1, findLongestWord(['Two', 'One', 'Leg'])));
 
-// 7. Test cases for filterLongWords() function
+// 8. Test cases for filterLongWords() function
 console.log("Testing the filterLongWords() function");
 // Pass test case
 console.log("\tExpected output of filterLongWords(['Particle', 'Mark', 'California', 'Field'], 5) is [Particle, California]  " + functionTester(["Particle", "California"], filterLongWords(["Particle", "Mark", "California", "Field"], 5)));
@@ -190,5 +206,5 @@ console.log("\tExpected output of filterLongWords(['1', '11', '111'], 10) is [] 
 // Fail test case
 console.log("\tExpected output of filterLongWords(['1', '11', '111'], 0) is 1, 11, 111  " + functionTester(["111"], filterLongWords(["1", "11", "111"], 0)));
 
-// 8. Modified jsfiddle code
+// 9. Modified jsfiddle code
 jsFiddleModified();
