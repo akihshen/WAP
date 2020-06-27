@@ -1,0 +1,19 @@
+body{
+    background-color: rgb(59, 169, 206);
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    word-spacing: 10px;
+    line-height: 35px;
+}
+
+#validators{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;   
+    opacity: 50%;   
+}
+
+h1{
+    word-spacing: 0.01em;
+}
