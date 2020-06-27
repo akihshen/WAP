@@ -22,10 +22,6 @@ function functionTester(expected, found) {
     }    
 }
 
-let a=[55];
-console.log(Array.isArray(a));
-console.log(['Particle', 'California'] === ['Particle', 'California']);
-
 /* max returns the maximum of 2 arguments */
 function max(a, b) {
 if (a > b) {
