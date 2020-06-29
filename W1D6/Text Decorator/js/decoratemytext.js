@@ -4,12 +4,11 @@ window.onload = function() {
     let chkBox = document.getElementById("bling");
 
     btn.onclick = function(){
-        // let style = window.getComputedStyle(txtArea);
-        // let fontSize = style.getPropertyValue('font-size');
-        //  //update the font periodically 
-        // let fontBigger = parseInt(fontSize) + 2;
-        // txtArea.style.fontSize = fontBigger + "px";
-        alert("tc");
+        let style = window.getComputedStyle(txtArea);
+        let fontSize = style.getPropertyValue('font-size');
+         //update the font periodically 
+        let fontBigger = parseInt(fontSize) + 2;
+        txtArea.style.fontSize = fontBigger + "px";
         txtArea.value = "123445678909876edyhckjkhv jncoh ckjjbib xv v xvvscsgi";
     };
     
