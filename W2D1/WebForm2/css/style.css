@@ -1,0 +1,42 @@
+nav{
+    background-color: #007bff!important;
+}
+
+a{
+    color: white!important;
+}
+
+.navbar-text{
+    display: block;
+    padding: .5rem 0.5rem;
+    color: white!important;
+}
+
+.bottom-button{
+    margin-left: 850px;
+}
+
+.rest-button{
+    border: 1px solid blue;
+    color: blue;
+}
+
+.cancel-button{
+    background-color: #fff;
+    color: #dc3545;
+}
+
+.submit-button{
+    background-color: white;
+    color: #007bff;
+}
+
+.main-container-style{
+    border: 2px solid gray;
+    margin-top: 4px;
+}
+
+.valid-date{
+    color: lightgray;
+    font-size: 12pt;
+}
