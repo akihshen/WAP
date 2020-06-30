@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+        <script>
+            // initialize mocha
+            mocha.setup('bdd');
+            // chai has a lot of stuff, let's make assert global
+            let assert = chai.assert;
+
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="css/functional.css">
+        <script src="js/functions.js"></script>
+        <script src="tests.js"></script>
+        <title>Functional Proframming</title>
+    </head>
+    <body>
+        <h1>JavaScript Functions and Test cases</h1>
+        <!-- <p>(Look in the Chrome developer console to see the output. 
+            <strong>CTRL_SHIFT_J</strong> Or on Firefox with <strong>CTRL_SHIFT_K</strong>)</p> -->
+
+        <div id="mocha"></div>
+        <script>
+            mocha.run();
+    
+        </script>
+
+        <div id="validators">
+            <a href="https://validator.w3.org/check/referer"><img 
+            src="http://mumstudents.org/cs472/2014-09/images/w3c-html.png" alt="Valid HTML5" />
+        </a>
+        </div>        
+    </body>
+</html>

@@ -1,0 +1,10 @@
+body{
+    text-align: center;
+}
+
+#validators{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;   
+    opacity: 50%;   
+}
