@@ -1,8 +1,8 @@
 describe("Tests Account Class", function(){
-    let account = new Account([12345]);
+    let account = new Account(Bank.nextNumber);
     
-    it("The account numbers is 12345", function(){
-        assert.equal(account.getNumber(), 12345);
+    it("The account numbers is 1", function(){
+        assert.equal(account.getNumber(), 1);
     });
     
     it("The account balance is 0.0", function(){
@@ -28,7 +28,7 @@ describe("Tests Account Class", function(){
     });
 
     it("Displays the account information", function(){
-        assert.equal(account.toString(), "Account 12345: balance 50");
+        assert.equal(account.toString(), "Account 1: balance 50");
     });
 
     it("Performs end of month tasks", function(){
