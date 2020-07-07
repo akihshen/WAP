@@ -124,11 +124,11 @@ describe("Bank Test", function(){
     });
 
     it("Creates a Savings Account and checks if its account number is 2", function(){
-        assert.equal(bank.addSavingsAccount(1.55));
+        assert.equal(bank.addSavingsAccount(1.55), 2);
     });
 
     it("Creates a Checking Account and checks if its account number is 3", function(){
-        assert.equal(bank.addCheckingAccount(2500));
+        assert.equal(bank.addCheckingAccount(2500), 3);
     });
 
     it("Tries to close a non-existing account and it returns false.", function(){
