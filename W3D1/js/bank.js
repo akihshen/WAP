@@ -32,37 +32,17 @@ class Bank{
     }
     
     accountReport(){
-        let report = "";
-
-        for(let i=0; i < this._accounts.length; i++){
-            report += this._accounts[i].toString() + "\n";
-        }
+        let report = "";        
+        this._accounts.forEach(account => report += account.toString() + "\n");
+        // this._accounts.reduce((report, account) => report + account.toString() + "\n", "");
         
-        return report.substring(0, report.length - 1);
-
-        // for(account of this._accounts){
-        //     report += account.toSring() + "\n";
-        // }
-
-        // this._accounts.reduce((report, account) => report += account.toString() + "\n", "");
+        return report.trim();
     }
 
     endOfMonth() {
         let endReport = "";        
-        let account;
-
-        for(let i=0; i < this._accounts.length; i++){
-            account = this._accounts[i];
-            endReport += account.endOfMonth() + "\n";
-            // endReport += this._accounts[i].endOfMonth() + "\n";
-        }
-
-        return endReport.substring(0, endReport.length - 1);
+        this._accounts.forEach(account => endReport += account.endOfMonth() + "\n");
         
-        // this._accounts.forEach(account => console.log(account.endOfMonth()));
-        
-        // for(account of this._accounts){
-        //     endReport += account.endOfMonth() + "\n";
-        // }
+        return endReport.trim();
     }
 }

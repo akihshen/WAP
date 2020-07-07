@@ -12,7 +12,6 @@ class Account {
      * @param {number} number the number for this account
      */
     constructor(number) {
-        console.log("Account Consr called");
         this._number = number; // the account number
         this._balance = 0.0;
     }

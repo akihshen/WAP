@@ -143,13 +143,18 @@ describe("Bank Test", function(){
         assert.equal(bank.accountReport(), "Account 1: balance 0\nChecking account 3: balance 0 and an overdraft limit of 2500.");
     });
 
-    it("Performs end of month tasks", function(){
+    it("Performs end of month tasks - account status is okay.", function(){
         assert.equal(bank.endOfMonth(), "");
     });
-    
 
-    
-        // bank.addAccount();
-        // bank.addSavingsAccount(Bank.nextNumber);
-        // bank.addCheckingAccount(Bank.nextNumber);
+    it("Performs end of month tasks - CheckingAccount run overdraft.", function(){
+        bank._accounts[1].withdraw(1000);
+        assert.equal(bank.endOfMonth(), "Warning, low balance CheckingAccount 3: balance: -1000 overdraft limit: 2500");
+    });
+
+    it("Performs end of month tasks - CheckingAccount run overdraft and added interest to SavingsAccount.", function(){
+        bank.addSavingsAccount(0.25);
+        bank._accounts[2].deposit(500);
+        assert.equal(bank.endOfMonth(), "Warning, low balance CheckingAccount 3: balance: -1000 overdraft limit: 2500\nInterest added SavingsAccount 4: balance: 501.25 interest: 0.25");
+    });
 });
