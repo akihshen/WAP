@@ -132,19 +132,21 @@ $(function(){
             newCircle = $("<div>", {
                 "class": "circle",
                 "css":{
-                    "background-color": color//"rgb(" + red + "," + green + "," + blue +")"
+                    "background-color": color,
+                    "top": offset.top,
+                    "left": 0.5 * i * width
                 }
             });
 
-            newCircle.offset({ top: offset.top, left: 0.5 * i * width }); // + 0.5 * i *width  // offset.left + 
+            // newCircle.offset({ top: offset.top, left: 0.5 * i * width }); // + 0.5 * i *width  // offset.left + 
 
             newCircle.click(hide);
             newCircle.mouseenter(changeOpacity);
             newCircle.mouseleave(resetOpacity);
-
-            $(".display-area").append(newCircle);
+            
+            circles.push(newCircle);
         }
 
-        // $(".display-area").append(circles);
+        $(".display-area").append(circles);
     }
 });
