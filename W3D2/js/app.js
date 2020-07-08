@@ -1,63 +1,146 @@
 $(function(){
+    "use strict";
 
-    timer = null;
+    let growthTimer = null;
+    let opacityTimer = null;
     let currentWidth;
 
-    let circle = $("#circle")[0];
-    let btn = $("#btn-start")[0];
-    let inputWidth = $("[name='width']")[0];
-    let inputAmount = $("[name='amount']")[0];
-    let inputRate = $("[name='rate']")[0];
-    let inputNumCircles = $("[name='number-circles']")[0];
-    let displayArea = $(".display-area")[0];
+    // Creating input control variables
+    let circle = $(".circle");
+    let btn = $("#btn-start");
+    let inputWidth = $("[name='width']");
+    let inputAmount = $("[name='amount']");
+    let inputRate = $("[name='rate']");
+    let inputNumCircles = $("[name='number-circles']");
+    let displayArea = $(".display-area");
 
-    let width = parseInt(inputWidth.value);
-    let amount = parseInt(inputAmount.value);
-    let rate = inputRate.value;
-    let numCircles = inputNumCircles.value;
-    let displayHeight = displayArea.style.height;
-    let displayWidth = displayArea.style.width;
+    // Reading initial display control parameters
+    let width = parseInt(inputWidth.val());
+    let amount = parseInt(inputAmount.val());
+    let rate = parseInt(inputRate.val());
+    let numCircles = parseInt(inputNumCircles.val());
+    let displayHeight = parseInt(displayArea.height());
+    let displayWidth = parseInt(displayArea.width());
 
-    circle.style.width = width + "px";
-    circle.style.height = width + "px";
-    console.log("Circle: " + circle.style.width);
+    // Initializing a circle
+    circle.width = width + "px";
+    circle.height = width + "px";
+    console.log("Circle: " + displayArea.width());
+
+    showCircle();
     
-    btn.onclick = function(){
-        timer = setInterval(growCircle, 1000);
-    };
+    btn.click(function(){ growthTimer = setInterval(growCircle, rate); });
 
-    circle.onclick = function hide(evt){
-        clearInterval(timer);
-        $(this).css("visibility", "hidden");
-    };
-
-    inputWidth.onchange = function(){
-        width = parseInt(inputWidth.value);
-        circle.style.width = width + "px";
-        circle.style.height = width + "px";
+    circle.click(hide);
+    circle.mouseenter(changeOpacity);
+    circle.mouseleave(resetOpacity);
+    
+    function hide(evt){
+        clearInterval(growthTimer);
+        $(this).hide();
+        // $(this).css("visibility", "hidden");
     }
 
-    inputAmount.onchange = function(){
-        amount = parseInt(inputAmount.value);
+    function changeOpacity(evt) {
+        opacityTimer=setInterval((evt) => {
+            let currentOpacity = parseFloat($(this).css("opacity"));
+            let next = currentOpacity-0.1;
+            $(this).css("opacity",next);
+        },200);
     }
 
-    inputRate.onchange = function(){
-        rate = inputRate.value;
-        timer = setInterval(growCircle, 1000);
+    function resetOpacity(evt){
+        clearInterval(opacityTimer);
+        $(this).css("opacity","1");
     }
 
-    inputNumCircles.onchange = function(){
-        numCircles = inputNumCircles.value;
+    inputWidth.change(function(){
+        width = amount = parseInt(inputWidth.val());
+        console.log(width);
+        circle.width = width + "px";
+        console.log(circle.width);
+        circle.height = width + "px";
+    });
+
+    inputAmount.change(function(){ amount = parseInt(inputAmount.val()); });
+
+    inputRate.change(function(){ growthTimer = setInterval(growCircle, rate); });
+
+    inputNumCircles.change(function(){ numCircles = parseInt(inputNumCircles.val()); });
+
+    // function growCircle(){
+    //     currentWidth = parseInt(circle.width)  + amount;
+    //     circle.width = currentWidth + "px";
+    //     circle.height = currentWidth + "px";
+    //     // console.log("Circle width: " + circle.width);
+    //     // console.log("Circle height: " + circle.height);
+    //     let top = Math.floor((displayHeight - currentWidth) / 2) % displayHeight;
+    //     let left = Math.floor((displayWidth - currentWidth) / 2) % displayWidth;
+    //     circle.offset({ top: top, left: left });
+
+    //     // let newDiameter=parseInt(circle.height())+growAmt+"px";
+    //     // let newLeft=parseInt(circle.css("left"))-growAmt/2+"px";
+    //     // let newTop=parseInt(circle.css("top"))-growAmt/2+"px";
+    // }
+
+    function growCircle(){
+        let circles = $(".circle");
+        let i = 0;
+
+        $(".circle").each(function(indx, e){
+            let eJ = $(e);
+
+            currentWidth = parseInt(eJ.width)  + amount;
+            eJ.width = currentWidth + "px";
+            eJ.height = currentWidth + "px";
+            // console.log("Circle width: " + circle.width);
+            // console.log("Circle height: " + circle.height);
+            let top = Math.floor(0.5 * (displayHeight + (i - 1) * currentWidth)) % displayHeight;
+            let left = Math.floor(0.5 * (displayWidth + (i - 1) * currentWidth)) % displayWidth;
+            eJ.offset({ top: top, left: left });
+            i++;
+        });
+
+        // for(let i = 0; i < numCircles; i++){
+        //     currentWidth = parseInt(circles[i].width)  + amount;
+        //     circles[i].width = currentWidth + "px";
+        //     circles[i].height = currentWidth + "px";
+        //     // console.log("Circle width: " + circle.width);
+        //     // console.log("Circle height: " + circle.height);
+        //     let top = Math.floor(0.5 * (displayHeight + (i - 1) * currentWidth)) % displayHeight;
+        //     let left = Math.floor(0.5 * (displayWidth + (i - 1) * currentWidth)) % displayWidth;
+        //     circles[i].offset({ top: top, left: left });
+        // }
+
+        // let newDiameter=parseInt(circle.height())+growAmt+"px";
+        // let newLeft=parseInt(circle.css("left"))-growAmt/2+"px";
+        // let newTop=parseInt(circle.css("top"))-growAmt/2+"px";
     }
 
-    function growCircle(){  
-        console.log("Circle Top: " + circle.style.top + " -------");
-        console.log("Circle LeftOffset: " + circle.offsetLeft + " -------");
-        console.log("Did Widtg: " + displayWidth + " -------");
-        currentWidth = circle.offsetWidth  + amount;
-        circle.style.width = currentWidth + "px";
-        circle.style.height = currentWidth + "px";
-        circle.style.top = Math.floor((displayHeight - currentWidth) / 2) + "px";
-        circle.style.left = Math.floor((displayWidth - currentWidth) / 2) + "px";
+    function showCircle(){
+        let circles = [circle];
+        let newCircle;
+        let color;
+        let offset =  circle.offset();
+
+        for(let i = 1; i < numCircles; i++){
+            color = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + 
+                    Math.floor(Math.random() * 255) +")";
+                    console.log(color);
+            newCircle = $("<div>", {
+                "class": "circle",
+                "background-color": color
+            });
+
+            newCircle.offset({ top: offset.top + 0.5 * i *width, left: offset.left + 0.5 * i * width });
+
+            newCircle.click(hide);
+            newCircle.mouseenter(changeOpacity);
+            newCircle.mouseleave(resetOpacity);
+
+            $(".display-area").append(newCircle);
+        }
+
+        // $(".display-area").append(circles);
     }
 });

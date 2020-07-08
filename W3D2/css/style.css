@@ -16,7 +16,7 @@
     background-color: rgb(245, 245, 245);
 }
 
-#circle{
+.circle{
     position: absolute;
     top: 50%;
     left: 50%;
