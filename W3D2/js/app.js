@@ -124,15 +124,19 @@ $(function(){
         let offset =  circle.offset();
 
         for(let i = 1; i < numCircles; i++){
-            color = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + 
-                    Math.floor(Math.random() * 255) +")";
-                    console.log(color);
+            let red = Math.floor(Math.random() * 255);
+            let green = Math.floor(Math.random() * 255);
+            let blue = Math.floor(Math.random() * 255);
+            color = "rgb(" + red + "," + green + "," + blue +")";
+
             newCircle = $("<div>", {
                 "class": "circle",
-                "background-color": color
+                "css":{
+                    "background-color": color//"rgb(" + red + "," + green + "," + blue +")"
+                }
             });
 
-            newCircle.offset({ top: offset.top + 0.5 * i *width, left: offset.left + 0.5 * i * width });
+            newCircle.offset({ top: offset.top, left: 0.5 * i * width }); // + 0.5 * i *width  // offset.left + 
 
             newCircle.click(hide);
             newCircle.mouseenter(changeOpacity);
