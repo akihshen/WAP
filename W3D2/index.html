@@ -16,7 +16,7 @@
     <title>jQuery - Clean Screen</title>
 </head>
 <body>
-    <div class="container">
+    <!-- <div class="container">
 
         <div class="display-area">
             <div class="circle"></div>
@@ -48,7 +48,38 @@
                 <div ><button id="btn-start">Start</button></div>
             </fieldset>
         </div>
-    </div>   
+    </div>    -->
+
+    <div style="clear:both;">
+
+    </div>
+
+    <div class="controls">
+        <fieldset>
+            <legend>Controls</legend>
+            <div>
+                <label for="width">Width (px) </label></div>
+            <div>
+                <input type="number" name="width" value="50" id="width">
+            </div>
+            <div>
+                <label for="amount">Growth Amount (px) </label></div>
+            <div>
+                <input type="number" name="amount" value="50" id="amount">
+            </div>
+            <div>
+                <label for="rate">Growth Rate (ms) </label></div>
+            <div>
+                <input type="number" name="rate" value="10" id="rate">
+            </div>
+            <div>
+                <label for="number-circles">Number of Circles </label></div>
+            <div>
+                <input type="number" name="number-circles" value="12" id="number-circles">
+            </div>
+            <div ><button id="btn-start">Start</button></div>
+        </fieldset>
+    </div>
     
     <div id="validation">
         <a href="https://validator.w3.org/check/referer">
