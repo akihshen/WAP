@@ -178,7 +178,6 @@ fabric.properties
 
 # Package Files #
 *.jar
-*.war
 *.nar
 *.ear
 *.zip
